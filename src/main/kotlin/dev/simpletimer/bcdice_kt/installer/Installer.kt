@@ -2,6 +2,7 @@ package dev.simpletimer.bcdice_kt.installer
 
 import com.github.kittinunf.fuel.httpGet
 import dev.simpletimer.bcdice_kt.BCDice
+import dev.simpletimer.bcdice_kt.util.pathSanitizing
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -125,7 +126,7 @@ class Installer {
                     //nullチェック
                     val entryData = zipEntry ?: continue
                     //作成されるファイル
-                    val entryFile = File(directory, entryData.name)
+                    val entryFile = File(directory, entryData.name).pathSanitizing(directory) ?: continue
                     //ディレクトリかどうかを確認
                     if (entryData.isDirectory) {
                         //ディレクトリを作成
@@ -231,7 +232,7 @@ class Installer {
                                 //nullチェック
                                 val entryData = tarEntry ?: continue
                                 //作成されるファイル
-                                val entryFile = File(gemCacheDirectory, entryData.name)
+                                val entryFile = File(gemCacheDirectory, entryData.name).pathSanitizing(gemCacheDirectory) ?: continue
                                 //ディレクトリかどうかを確認
                                 if (entryData.isDirectory) {
                                     //ディレクトリを作成
@@ -267,7 +268,7 @@ class Installer {
                             //nullチェック
                             val entryData = gzipTarEntry ?: continue
                             //作成されるファイル
-                            val entryFile = File(gemDirectory, entryData.name)
+                            val entryFile = File(gemDirectory, entryData.name).pathSanitizing(gemDirectory) ?: continue
                             //親ディレクトリを取得
                             val parentFile = entryFile.parentFile
                             //親ディレクトリがなかったら作成する
