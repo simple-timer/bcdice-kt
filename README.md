@@ -3,7 +3,7 @@
 [BCDice]( https://github.com/bcdice/BCDice )をKotlinやJavaなどで使うためのライブラリ
 
 ## Gradle・Maven
-[![](https://jitpack.io/v/dev.simpletimer/bcdice-kt.svg)](https://jitpack.io/#dev.simpletimer/bcdice-kt)
+[![](https://jitpack.io/v/simple-timer/bcdice-kt.svg)](https://jitpack.io/#simple-timer/bcdice-kt)
 ### Gradle
 ```gradle
 repositories {
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'dev.simpletimer:bcdice-kt:VERSION'
+    implementation 'com.github.simple-timer:bcdice-kt:VERSION'
 }
 ```
 ### Maven
@@ -24,14 +24,11 @@ dependencies {
 </repositories>
 
 <dependency>
-    <groupId>dev.simpletimer</groupId>
+    <groupId>com.github.simple-timer</groupId>
     <artifactId>bcdice-kt</artifactId>
     <version>VERSION</version>
 </dependency>
 ```
-
-## ドキュメント（KDoc）
-### https://doc.bcdice-kt.simpletimer.dev/
 
 ## 実行時の下準備
 
@@ -193,9 +190,3 @@ OriginalTable.TableData tableData = new OriginalTable.TableData(
 Result result = bcdice.rollOriginalTable(tableData);
 System.out.println(result.getText()); //結果のテキスト
 ```
-
-## 使用プロジェクト
-### SimpleTimer
-マーダーミステリーのDiscord卓用タイマー。<br>
-v2以降、ダイス機能の実装に使用されている。<br>
-https://source.simpletimer.dev/
