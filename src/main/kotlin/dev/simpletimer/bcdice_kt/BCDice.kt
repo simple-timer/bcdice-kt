@@ -8,14 +8,16 @@ import dev.simpletimer.bcdice_kt.bcdice_task.result.Result
 import org.jruby.embed.jsr223.JRubyEngine
 import java.io.*
 import java.net.URL
+import java.nio.file.Path
 import java.nio.file.Paths
 import javax.script.ScriptEngineManager
 
 /**
  * BCDiceを扱うためのすべての起点
  *
+ * @param installDirectory 実行に必要なディレクトリがインストールされる場所のパス
  */
-class BCDice {
+class BCDice(installDirectory: String = "/") {
     companion object {
         /**
          * BCDiceのURL
@@ -81,7 +83,8 @@ $buffer
 
     init {
         //実行ファイルのディレクトリを取得
-        directory = File(Paths.get(javaClass.protectionDomain.codeSource.location.toURI()).toString()).parentFile
+        val jarFileParentDirectory = File(Paths.get(javaClass.protectionDomain.codeSource.location.toURI()).toString()).parentFile
+        directory = File(jarFileParentDirectory, installDirectory)
 
         //インストーラーのインスタンス
         installer = Installer()
