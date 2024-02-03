@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.simpletimer.bcdice_kt"
-version = "1.7.1"
+version = "1.7.2"
 
 repositories {
     mavenCentral()
