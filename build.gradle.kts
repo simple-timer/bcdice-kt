@@ -18,13 +18,13 @@ repositories {
 
 dependencies {
     //Rubyのエンジン
-    implementation("org.jruby", "jruby-complete", "9.4.3.0")
+    implementation("org.jruby", "jruby-complete", "9.4.5.0")
     //Jsonの解析
-    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.6.0")
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.6.2")
     //HTTP
     implementation("com.github.kittinunf.fuel", "fuel", "2.3.1")
     //圧縮の解凍
-    implementation("org.apache.commons","commons-compress","1.24.0")
+    implementation("org.apache.commons","commons-compress","1.25.0")
 
     //KDOCの生成
     dokkaHtmlPlugin("org.jetbrains.dokka", "kotlin-as-java-plugin", "1.6.10")
