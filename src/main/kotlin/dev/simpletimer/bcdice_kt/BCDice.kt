@@ -1,14 +1,14 @@
 package dev.simpletimer.bcdice_kt
 
-import dev.simpletimer.bcdice_kt.installer.Installer
 import dev.simpletimer.bcdice_kt.bcdice_task.GameSystem
 import dev.simpletimer.bcdice_kt.bcdice_task.GameSystems
 import dev.simpletimer.bcdice_kt.bcdice_task.OriginalTable
 import dev.simpletimer.bcdice_kt.bcdice_task.result.Result
+import dev.simpletimer.bcdice_kt.installer.Installer
 import org.jruby.embed.jsr223.JRubyEngine
-import java.io.*
+import java.io.File
+import java.io.IOException
 import java.net.URL
-import java.nio.file.Path
 import java.nio.file.Paths
 import javax.script.ScriptEngineManager
 
@@ -17,7 +17,7 @@ import javax.script.ScriptEngineManager
  *
  * @param installDirectory 実行に必要なディレクトリがインストールされる場所のパス
  */
-class BCDice(installDirectory: String = "/") {
+class BCDice(installDirectory: String? = null) {
     companion object {
         /**
          * BCDiceのURL
@@ -84,7 +84,15 @@ $buffer
     init {
         //実行ファイルのディレクトリを取得
         val jarFileParentDirectory = File(Paths.get(javaClass.protectionDomain.codeSource.location.toURI()).toString()).parentFile
-        directory = File(jarFileParentDirectory, installDirectory)
+        //BCDiceの依存をインストールするディレクトリ
+        directory = if (installDirectory == null) {
+            jarFileParentDirectory
+        } else {
+            val targetDirectory = File(jarFileParentDirectory, installDirectory)
+            if (!directory.exists()) directory.mkdirs()
+
+            targetDirectory
+        }
 
         //インストーラーのインスタンス
         installer = Installer()
