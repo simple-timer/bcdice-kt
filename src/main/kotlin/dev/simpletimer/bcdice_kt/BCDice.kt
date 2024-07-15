@@ -22,7 +22,7 @@ class BCDice(installDirectory: String? = null) {
         /**
          * BCDiceのURL
          */
-        val bcdiceURL = URL("https://github.com/bcdice/BCDice/archive/refs/tags/v3.12.0.zip")
+        val bcdiceURL = URL("https://github.com/bcdice/BCDice/archive/refs/tags/v3.14.0.zip")
 
         /**
          * Rubyを動かすエンジン
