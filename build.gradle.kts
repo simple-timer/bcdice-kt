@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("plugin.serialization") version "2.0.0"
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.1.0"
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("maven-publish")
     id("org.jetbrains.dokka") version "1.9.20"
